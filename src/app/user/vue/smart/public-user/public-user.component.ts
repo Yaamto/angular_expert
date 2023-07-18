@@ -16,7 +16,6 @@ export class PublicUserComponent implements OnInit {
   }
 
   private getUsers() {
-    console.log('test')
-    this.userService.getUsers().subscribe(users => this.users = users);
+    this.userService.getUsers().subscribe((users: User[]) => this.users = users);
   }
 }
