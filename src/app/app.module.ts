@@ -9,10 +9,13 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { SharedModule } from './shared/shared.module';
 import {StyleClassModule} from 'primeng/styleclass';
 import { AuthModule } from './core/auth.module';
+import { NavbarComponent } from './layout/navbar/navbar.component';
+import { MenubarModule } from 'primeng/menubar';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
 
   ],
   imports: [
@@ -23,7 +26,8 @@ import { AuthModule } from './core/auth.module';
     HttpClientInMemoryWebApiModule.forRoot(DataService),
     SharedModule,
     StyleClassModule,
-    AuthModule
+    AuthModule,
+    MenubarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
