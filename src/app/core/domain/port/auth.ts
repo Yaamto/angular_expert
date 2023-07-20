@@ -4,4 +4,5 @@ export interface IAuthentication {
     register(user: Partial<User>): Observable<User>
     login(user: Partial<User>): Observable<User>
     logout(): void
+    isAuthenticated(): Promise<boolean>
 }

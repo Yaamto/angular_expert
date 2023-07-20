@@ -141,7 +141,6 @@ private TOKEN_SECRET = "C7F78B2D25A64E0E8C9A3B7D6F4G1I9K5M8O2Q0S3U7W5Y4X1Z6J7L2N
         return this.checkAuth(requestInfo);
       }
     }
-
     // Laisser l'API gérer la requête pour les autres collections
     return undefined;
   }
@@ -169,7 +168,7 @@ private TOKEN_SECRET = "C7F78B2D25A64E0E8C9A3B7D6F4G1I9K5M8O2Q0S3U7W5Y4X1Z6J7L2N
         const token = AES.encrypt(JSON.stringify(userData), secretKey).toString();
 
         return requestInfo.utils.createResponse$(() => ({
-          body: {token: token},
+          body: {token: token, user: user},
           status: 200,
           statusText: 'OK'
         }));
