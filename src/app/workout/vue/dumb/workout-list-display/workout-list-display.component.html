@@ -1,7 +1,9 @@
-<p-card header="workout.workoutType.libelle" subheader="Etablissement de la séance" [style]="{ width: '360px' }">
+<p-card header="{{workout.workoutType.libelle}}"
+    subheader="{{workout.establishment.nom}} - {{workout.establishment.address}}, {{workout.establishment.cp}} {{workout.establishment.city}}"
+    [style]="{ width: '360px' }">
 
     <ng-template pTemplate="content">
-        <h5 class="m-0 font-italic">workout.idTheme.libelle</h5>
+        <h5 class="m-0 font-italic"> Thème : {{workout.theme.libelle}}</h5>
         <div class="flex flex-row">
             <div class="flex flex-column">
                 <h4><i class="pi pi-clock mr-1"></i>Horaires :</h4>
@@ -10,13 +12,13 @@
 
                     <i class="pi pi-arrow-right mx-1"></i>
 
-                    <p-chip label="{{ workout.dateFin | date:'hh:mm' }}"></p-chip>
+                    <p-chip class="test" label="{{ workout.dateFin | date:'hh:mm' }}"></p-chip>
                 </div>
             </div>
             <div class="flex flex-column ml-3">
                 <h4><i class="pi pi-users mr-1"></i>Capacité :</h4>
                 <div class="flex justify-content-center">
-                    <p-chip label=" nb résa/{{ workout.capaciteMax}}"> </p-chip>
+                    <p-chip label=" {{workout.reservationCount}}/{{ workout.capaciteMax}}"> </p-chip>
                 </div>
             </div>
         </div>

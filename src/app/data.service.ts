@@ -2,6 +2,12 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
 import { User } from './shared/domain/user.model';
+import { Workout } from './shared/domain/workout.model';
+import { Theme } from './shared/domain/theme.model';
+import { WorkoutType } from './shared/domain/workoutType.model';
+import { Establishment } from './shared/domain/establishment.model';
+import { WorkoutEstablishment } from './shared/domain/workoutEstablishment.model';
+import { Reservation } from './shared/domain/reservation.model';
 import { AES, enc } from 'crypto-js';
 
 @Injectable({
@@ -55,14 +61,20 @@ export class DataService implements InMemoryDbService {
           dateFin: new Date(),
           createdAt: new Date(),
           updatedAt: new Date(),
-          idTheme: 1,
+          idTheme: 2,
           idWorkoutType: 1,
         },
       ],
       themes: [
         {
           id: 1,
-          libelle: 40,
+          libelle: 'Combat',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: 2,
+          libelle: 'Collectif',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -91,6 +103,16 @@ export class DataService implements InMemoryDbService {
           idUsers: 1,
           idWorkout: 1,
         },
+        {
+          id: 2,
+          isConfirmed: true,
+          isCanceled: false,
+          isUpdated: false,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          idUsers: 2,
+          idWorkout: 2,
+        },
       ],
       notifys: [
         {
@@ -116,6 +138,12 @@ export class DataService implements InMemoryDbService {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          id: 2,
+          libelle: 'Volleyball',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       coachs: [
         {
@@ -127,15 +155,22 @@ export class DataService implements InMemoryDbService {
           idUsers: 1,
         },
       ],
-      wourkoutsEstablishments: [
+      workoutsEstablishments: [
         {
           id: 1,
           idWorkout: 1,
-          idEtablishments: 2,
+          idEstablishment: 1,
+        },
+        {
+          id: 2,
+          idWorkout: 2,
+          idEstablishment: 1,
         },
       ],
       authentification: [],
     };
+    this.db.workouts = this.getWorkouts();
+
     return this.db;
   }
 
@@ -284,5 +319,55 @@ export class DataService implements InMemoryDbService {
         statusText: 'Unauthorized',
       }));
     }
+  }
+  private getWorkouts(): Workout[] {
+    const workouts: Workout[] = this.db.workouts;
+    const themes: Theme[] = this.db.themes;
+    const workoutTypes: WorkoutType[] = this.db.workoutTypes;
+    const establishments: Establishment[] = this.db.establishments;
+    const workoutEstablishments: WorkoutEstablishment[] =
+      this.db.workoutsEstablishments;
+    const reservations: Reservation[] = this.db.reservations;
+
+    // Effectuer une jointure entre les workouts et les thèmes associés en utilisant l'ID du thème
+    workouts.forEach((workout: Workout) => {
+      const themeId: number = workout.idTheme;
+      const theme: Theme | undefined = themes.find(
+        (t: Theme) => t.id === themeId,
+      );
+      if (theme) {
+        workout.theme = theme;
+      }
+
+      const workoutTypeId: number = workout.idWorkoutType;
+      const workoutType: WorkoutType | undefined = workoutTypes.find(
+        (wt: WorkoutType) => wt.id === workoutTypeId,
+      );
+      if (workoutType) {
+        workout.workoutType = workoutType;
+      }
+
+      const workoutEstablishment: WorkoutEstablishment | undefined =
+        workoutEstablishments.find(
+          (we: WorkoutEstablishment) => we.idWorkout === workout.id,
+        );
+
+      if (workoutEstablishment) {
+        const establishmentId: number = workoutEstablishment.idEstablishment;
+        const establishment: Establishment | undefined = establishments.find(
+          (est: Establishment) => est.id === establishmentId,
+        );
+        if (establishment) {
+          workout.establishment = establishment;
+        }
+      }
+      // Compter le nombre de réservations pour ce workout
+      const reservationCount: number = reservations.filter(
+        (r: Reservation) => r.idWorkout === workout.id,
+      ).length;
+      workout.reservationCount = reservationCount;
+    });
+
+    return workouts;
   }
 }
