@@ -1,0 +1,32 @@
+<div class="establishment-details ">
+    <h3 class="text-center">{{ isNewEstablishment ? 'Ajouter un nouvel établissement' : 'Modifier l\'établissement' }}</h3>
+    <div class="flex flex-column gap-2 w-4 mx-auto">
+      <label htmlFor="name">Nom</label>
+      <input pInputText id="name" aria-describedby="name" [ngModel]="selectedEstablishment?.nom" (ngModelChange)="onChange('nom', $event)" />
+  </div>
+  <div class="flex flex-column gap-2 w-4 mx-auto">
+    <label htmlFor="address">Adresse</label>
+    <input pInputText id="address" aria-describedby="address" [ngModel]="selectedEstablishment?.address" (ngModelChange)="onChange('address', $event)" />
+  </div>
+  <div class="flex flex-column gap-2 w-4 mx-auto">
+    <label htmlFor="city">Ville</label>
+    <input pInputText id="city" aria-describedby="city" [ngModel]="selectedEstablishment?.city" (ngModelChange)="onChange('city', $event)" />
+  </div>
+  <div class="flex flex-column gap-2 w-4 mx-auto">
+    <label htmlFor="zipcode">Code postal</label>
+    <p-inputNumber inputId="zipcode" aria-describedby="zipcode" [ngModel]="selectedEstablishment?.cp" (ngModelChange)="onChange('cp', $event)" > </p-inputNumber>
+  </div>
+   <div class="flex flex-column gap-2 w-4 mx-auto">
+      <label>Heures d'ouverture:</label>
+      <p-calendar [ngModel]="selectedEstablishment?.openHours" (ngModelChange)="onChange('openHours', $event)"></p-calendar>
+    </div>
+    <div class="flex flex-column gap-2 w-4 mx-auto">
+      <label>Heures de fermeture:</label>
+      <p-calendar [ngModel]="selectedEstablishment?.closeHours" (ngModelChange)="onChange('closeHours', $event)"></p-calendar>
+    </div>
+    <div class="flex justify-content-center gap-2">
+      <p-button (click)="onSave()" > {{ isNewEstablishment ? 'Ajouter' : 'Enregistrer' }}</p-button>
+      <p-button routerLink="/establishments" styleClass="p-button-outlined">Annuler</p-button>
+    </div>
+  </div>
+  

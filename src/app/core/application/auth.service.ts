@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IAuthentication } from '../domain/port/auth';
-import { User } from 'src/app/shared/domain/user.model';
+import { User } from 'src/app/shared/domain/models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable, firstValueFrom, of } from 'rxjs';
 import { AuthStateService } from './auth-state.service';

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { User } from 'src/app/shared/domain/user.model';
+import { User } from 'src/app/shared/domain/models/user.model';
 import { AuthStateService } from 'src/app/core/application/auth-state.service';
 import { Subscription } from 'rxjs';
 
@@ -32,7 +32,7 @@ constructor(private authStateService: AuthStateService) { }
     localStorage.removeItem('token');
     localStorage.removeItem('user');
   }
-  
+
   toggleNavbar() {
     this.showMenu = !this.showMenu;
   }
