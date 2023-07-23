@@ -8,6 +8,7 @@ import { WorkoutType } from './shared/domain/workoutType.model';
 import { Establishment } from './shared/domain/establishment.model';
 import { WorkoutEstablishment } from './shared/domain/workoutEstablishment.model';
 import { Reservation } from './shared/domain/reservation.model';
+
 import { AES, enc } from 'crypto-js';
 
 @Injectable({
@@ -186,8 +187,7 @@ export class DataService implements InMemoryDbService {
         return this.checkAuth(requestInfo);
       }
     }
-
-    // Laisser l'API gérer la requête pour les autres collections
+  
     return undefined;
   }
 
@@ -209,12 +209,19 @@ export class DataService implements InMemoryDbService {
 
     const secretKey = this.TOKEN_SECRET;
     const userData = {
-      userId: user.id,
-      expiresAt: Math.floor(Date.now() / 1000) + 3600,
-    };
 
-    //Création du token d'authentification
-    const token = AES.encrypt(JSON.stringify(userData), secretKey).toString();
+    userId: user.id,
+    expiresAt: Math.floor(Date.now() / 1000) + (3600 * 24) // 24 heures
+};
+
+        //Création du token d'authentification
+        const token = AES.encrypt(JSON.stringify(userData), secretKey).toString();
+
+        return requestInfo.utils.createResponse$(() => ({
+          body: {token: token, user: user},
+          status: 200,
+          statusText: 'OK'
+        }));
 
     return requestInfo.utils.createResponse$(() => ({
       body: { token: token },
