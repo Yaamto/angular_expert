@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'users', loadChildren: () => import('./user/user.module').then(m => m.UserModule), canActivate: [AuthGuard] },
   { path: 'auth/login', component: LoginComponent },
   { path: 'auth/register', component: RegisterComponent },
+  { path: 'establishments', loadChildren: () => import('src/app/admin/establishment/establishment.module').then(m => m.EstablishmentModule), canActivate: [AuthGuard] },
 ];
 
 @NgModule({

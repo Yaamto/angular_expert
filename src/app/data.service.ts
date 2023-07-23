@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
-import { User } from './shared/domain/user.model';
+import { User } from './shared/domain/models/user.model';
 import { AES, enc } from 'crypto-js';
 
 @Injectable({
@@ -67,7 +67,7 @@ private TOKEN_SECRET = "C7F78B2D25A64E0E8C9A3B7D6F4G1I9K5M8O2Q0S3U7W5Y4X1Z6J7L2N
           closeHours: new Date(),
           createdAt: new Date(),
           updatedAt: new Date(),
-        }
+        },
       ],
       reservations: [
         {
@@ -141,7 +141,7 @@ private TOKEN_SECRET = "C7F78B2D25A64E0E8C9A3B7D6F4G1I9K5M8O2Q0S3U7W5Y4X1Z6J7L2N
         return this.checkAuth(requestInfo);
       }
     }
-    // Laisser l'API gérer la requête pour les autres collections
+  
     return undefined;
   }
 
@@ -161,7 +161,7 @@ private TOKEN_SECRET = "C7F78B2D25A64E0E8C9A3B7D6F4G1I9K5M8O2Q0S3U7W5Y4X1Z6J7L2N
     const secretKey = this.TOKEN_SECRET;
     const userData = {
     userId: user.id,
-    expiresAt: Math.floor(Date.now() / 1000) + 3600
+    expiresAt: Math.floor(Date.now() / 1000) + (3600 * 24) // 24 heures
 };
 
         //Création du token d'authentification

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/shared/domain/user.model';
+import { User } from 'src/app/shared/domain/models/user.model';
 import { UserService } from 'src/app/user/application/user.service';
 @Component({
   selector: 'app-public-user',

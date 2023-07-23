@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { User } from 'src/app/shared/domain/user.model';
+import { User } from 'src/app/shared/domain/models/user.model';
 
 @Component({
   selector: 'app-login-display',
