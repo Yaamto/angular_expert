@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
-import { User } from './shared/domain/user.model';
+import { User } from './shared/domain/models/user.model';
 import { Workout } from './shared/domain/workout.model';
 import { Theme } from './shared/domain/theme.model';
 import { WorkoutType } from './shared/domain/workoutType.model';

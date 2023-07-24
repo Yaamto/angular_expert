@@ -21,6 +21,11 @@
           <span>Establishments</span>
         </a>
       </li>
+      <li>
+        <a [routerLink]="['/admin/workouts']" routerLinkActive="active" >
+          <span>Workouts</span>
+        </a>
+      </li>
       <li *ngIf="isAuthenticated === false">
         <a [routerLink]="['/auth/register']" routerLinkActive="active">
           <span>Register</span>
@@ -36,6 +41,7 @@
           <span>Logout</span>
         </a>
       </li>
+      
     </ul>
   </div>
 </div>
