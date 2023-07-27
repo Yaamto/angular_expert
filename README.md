@@ -1,7 +1,7 @@
 
 # Angular expert 
 ## Présentation de la documentation
-
+repo github : https://github.com/Yaamto/angular_expert
 ## 1. Setup du projet
 
 Commencer par installer les dépendances : 
