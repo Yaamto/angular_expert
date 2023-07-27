@@ -21,27 +21,52 @@ export class AuthService implements IAuthentication{
   }
   
   public logout(): void {
-    this.authStateService.setIsAuthenticated(false); // Utilisateur déconnecté
+    this.authStateService.setIsAdmin(false);
+    this.authStateService.setIsAuthenticated(false); 
     localStorage.removeItem('token');
   }
 
   public async isAuthenticated(): Promise<boolean> {
     const token = localStorage.getItem('token');
     if (!token) {
-      this.authStateService.setIsAuthenticated(false); // Utilisateur déconnecté
+      this.authStateService.setIsAuthenticated(false); 
       return false;
     }
     try {
       const isAuth = await firstValueFrom(this.http.post<boolean>(this.authUrl + 'checkAuth', token))
       if (!isAuth) {
-        this.authStateService.setIsAuthenticated(false); // Utilisateur déconnecté
+        this.authStateService.setIsAuthenticated(false); 
         return false;
       }
-      this.authStateService.setIsAuthenticated(true); // Utilisateur connecté
+      this.authStateService.setIsAuthenticated(true); 
       return true;
     } catch (err) {
-      this.authStateService.setIsAuthenticated(false); // Erreur, utilisateur déconnecté
+      this.authStateService.setIsAuthenticated(false); 
       return false;
     }
+  }
+
+  public async isAdmin(): Promise<boolean> {
+//  We need to use checkAuth before and get the user in localStorage to check if the user is admin with isAdmin
+   const isAuth = await this.isAuthenticated()
+   if(!isAuth){
+     this.authStateService.setIsAuthenticated(false);
+     return false
+   }
+    
+   const userLocal = localStorage.getItem('user');
+   if(userLocal){
+     const user = JSON.parse(userLocal);
+      if(user.isAdmin && isAuth){
+        this.authStateService.setIsAuthenticated(true);
+        this.authStateService.setIsAdmin(true);
+        return true;
+      } else {
+        this.authStateService.setIsAdmin(false);
+        return false
+      }
+   }
+   this.authStateService.setIsAdmin(false);
+   return false
   }
 }
