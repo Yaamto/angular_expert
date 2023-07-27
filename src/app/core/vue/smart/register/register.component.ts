@@ -7,12 +7,11 @@ import { User } from 'src/app/shared/domain/models/user.model';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit{
+export class RegisterComponent{
   user: Partial<User> = {}
 constructor(private authService: AuthService) { }
 
-  ngOnInit(): void {
-  }
+
   onRegisterSubmit(userInfo: Partial<User>) {
 
   this.authService.register(userInfo).subscribe({

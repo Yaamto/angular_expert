@@ -12,6 +12,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { FilterDisplayComponent } from './vue/dumb/filter-display/filter-display.component';
 import { FormsModule } from '@angular/forms';
+import { ReservationDisplayService } from './application/reservation-display.service';
+import { WorkoutService } from './application/workout.service';
+import { ToastModule } from 'primeng/toast';
 @NgModule({
   declarations: [WorkoutListDisplayComponent, WorkoutListComponent, FilterDisplayComponent],
   imports: [
@@ -24,7 +27,9 @@ import { FormsModule } from '@angular/forms';
     InputTextModule,
     InputNumberModule,
     CalendarModule,
-    FormsModule
+    FormsModule,
+    ToastModule
   ],
+  providers: [ReservationDisplayService, WorkoutService]
 })
 export class WorkoutModule {}

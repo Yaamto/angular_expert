@@ -102,7 +102,7 @@ export class DataService implements InMemoryDbService {
           createdAt: new Date(),
           updatedAt: new Date(),
           idUsers: 1,
-          idWorkout: 1,
+          idWorkoutEstablishment: 1,
         },
         {
           id: 2,
@@ -112,7 +112,7 @@ export class DataService implements InMemoryDbService {
           createdAt: new Date(),
           updatedAt: new Date(),
           idUsers: 2,
-          idWorkout: 2,
+          idWorkoutEstablishment: 2,
         },
       ],
       notifys: [
@@ -370,7 +370,7 @@ export class DataService implements InMemoryDbService {
       }
       // Compter le nombre de réservations pour ce workout
       const reservationCount: number = reservations.filter(
-        (r: Reservation) => r.idWorkout === workout.id,
+        (r: Reservation) => r.idWorkoutEstablishment === workout.id,
       ).length;
       workout.reservationCount = reservationCount;
     });

@@ -8,13 +8,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class FilterDisplayComponent {
     dateFin: Date | null;
     dateDebut: Date | null;
-    capaciteMax: Number | null;
+    capaciteMax: number | null;
     @Output() resetWorkout: EventEmitter<any> = new EventEmitter();
-    @Output() onFilter: EventEmitter<any> = new EventEmitter();
-    constructor() { }
+    @Output() filter: EventEmitter<any> = new EventEmitter();
 
     applyFilter(): void {
-        this.onFilter.emit({dateFin: this.dateFin, dateDebut: this.dateDebut, capaciteMax: this.capaciteMax});
+        this.filter.emit({dateFin: this.dateFin, dateDebut: this.dateDebut, capaciteMax: this.capaciteMax});
     }
     onReset(){
       this.resetWorkout.emit();

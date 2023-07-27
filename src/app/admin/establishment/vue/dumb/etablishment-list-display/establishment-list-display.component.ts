@@ -17,7 +17,7 @@ export class EstablishmentListDisplayComponent {
   constructor(private router : Router) { }
   onSelect(establishment: Establishment): void {
     this.selectEstablishment.emit(establishment);
-    this.router.navigate(['/establishments/create']);
+    this.router.navigate(['/admin/establishments/create']);
   }
 
   onUpdate(establishment: Establishment): void {
@@ -29,6 +29,6 @@ export class EstablishmentListDisplayComponent {
   }
   onAddNew(): void {
     this.addNewEstablishment.emit();
-    this.router.navigate(['/establishments/create']);
+    this.router.navigate(['/admin/establishments/create']);
   }
 }

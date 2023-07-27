@@ -12,7 +12,7 @@ import { Establishment } from 'src/app/shared/domain/establishment.model';
 })
 export class WorkoutFormDisplayComponent {
   @Input() selectedWorkout: Workout | null = null;
-  @Input() isNewWorkout: boolean = false;
+  @Input() isNewWorkout = false;
   @Input() themes: Theme[] = [];
   @Input() workoutTypes: WorkoutType[] = [];
   @Input() establishments: Establishment[] = [];

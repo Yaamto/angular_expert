@@ -9,7 +9,7 @@ import { EstablishmentDisplayService } from '../../../application/establishment-
 })
 export class EstablishmentFormDisplayComponent {
   @Input() selectedEstablishment: Establishment | null = null;
-  @Input() isNewEstablishment: boolean = false;
+  @Input() isNewEstablishment = false;
   newEstablishment: any = {}
 
   @Output() saveEstablishment: EventEmitter<Establishment> = new EventEmitter();

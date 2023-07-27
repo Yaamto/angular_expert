@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class NavbarComponent implements OnInit, OnDestroy{
 showMenu = false;
-isAuthenticated: boolean = false;
+isAuthenticated = false;
 authSubscription: Subscription;
 user: User | null = null;
 
