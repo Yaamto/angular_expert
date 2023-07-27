@@ -24,6 +24,7 @@ export class WorkoutFormDisplayComponent {
   constructor(private workoutService: WorkoutDisplayService) { }
 
   onSave(): void {
+    console.log(this.newWorkout);
     if(this.selectedWorkout !== null){
       Object.assign(this.selectedWorkout, this.newWorkout);
       this.workoutService.setSelectedWorkout(this.selectedWorkout);
@@ -36,7 +37,6 @@ export class WorkoutFormDisplayComponent {
   
   onChange(field: keyof Workout, value: any): void {
       (this.newWorkout as any)[field] = value;
-      console.log(this.themes)
   }
 
   onDelete(): void {

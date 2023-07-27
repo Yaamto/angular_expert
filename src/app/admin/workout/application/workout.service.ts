@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Workout } from 'src/app/shared/domain/workout.model';
 import { IWorkoutService } from '../domain/port/workout';
+import { WorkoutEstablishment } from 'src/app/shared/domain/workoutEstablishment.model';
+import { WorkoutEstablishmentService } from 'src/app/shared/application/workout-establishment.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,7 @@ export class WorkoutService implements IWorkoutService {
 
   private selectedWorkoutSubject: BehaviorSubject<Workout | null> = new BehaviorSubject<Workout | null>(null);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private workoutEstablishmentService: WorkoutEstablishmentService) { }
 
   getAllWorkouts(): Observable<Workout[]> {
     return this.http.get<Workout[]>(this.apiUrl);
@@ -25,7 +27,10 @@ export class WorkoutService implements IWorkoutService {
 
   saveWorkout(workout: Workout): Observable<Workout> {
     const newWorkout = this.http.post<Workout>(this.apiUrl, workout);
-    newWorkout.subscribe()
+    newWorkout.subscribe((workout: Workout) => {
+      const newWorkoutEstablishment: Partial<WorkoutEstablishment> = {idWorkout: workout.id, idEstablishment: workout.establishment.id}
+      this.workoutEstablishmentService.saveWorkoutEstablishment(newWorkoutEstablishment);
+    })
     return newWorkout
   }
 
