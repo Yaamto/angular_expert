@@ -23,6 +23,10 @@ const routes: Routes = [
     loadChildren: () => import('src/app/admin/establishment/establishment.module').then(m => m.EstablishmentModule),
     canActivate: [AuthGuard] 
   },
+  { path: 'admin/workouts',
+  loadChildren: () => import('src/app/admin/workout/workout.module').then(m => m.WorkoutModule),
+  canActivate: [AuthGuard] 
+  },
   { path: 'auth/login',
     component: LoginComponent 
   },
