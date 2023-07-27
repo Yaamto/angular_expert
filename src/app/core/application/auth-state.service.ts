@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class AuthStateService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
-  
+  private isAdminSubject = new BehaviorSubject<boolean>(false);
 
   setIsAuthenticated(isAuthenticated: boolean) {
     this.isAuthenticatedSubject.next(isAuthenticated);
@@ -16,5 +16,13 @@ export class AuthStateService {
 
   getIsAuthenticated(): Observable<boolean> {
     return this.isAuthenticatedSubject.asObservable();
+  }
+  
+  setIsAdmin(isAdmin: boolean) {
+    this.isAdminSubject.next(isAdmin);
+  }
+
+  getIsAdmin(): Observable<boolean> {
+    return this.isAdminSubject.asObservable();
   }
 }

@@ -16,12 +16,12 @@
           <span>Workouts</span>
         </a>
       </li>
-      <li>
+      <li *ngIf="isAuthenticated === true">
         <a [routerLink]="['/reservations']" routerLinkActive="active" >
           <span>Mes reservations</span>
         </a>
       </li>
-      <li class="navbar-item dropdown">
+      <li class="navbar-item dropdown" *ngIf="isAdmin === true">
         <button class="dropdown-btn">Admin</button>
         <div class="dropdown-content">
           <a [routerLink]="['/admin/workouts']">Workouts</a>
