@@ -4,12 +4,12 @@ import { AuthGuard } from './core/auth.guard';
 import { AdminGuard } from './core/admin-guard.guard';
 import { RegisterComponent } from './core/vue/smart/register/register.component';
 import { LoginComponent } from './core/vue/smart/login/login.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
-    path: 'users',
-    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
-    canActivate: [AuthGuard],
+    path:'',
+    component: HomeComponent
   },
   {
     path: 'auth',

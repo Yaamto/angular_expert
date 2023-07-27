@@ -11,11 +11,13 @@ import {StyleClassModule} from 'primeng/styleclass';
 import { AuthModule } from './core/auth.module';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { MenubarModule } from 'primeng/menubar';
-
+import { ButtonModule } from 'primeng/button';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    HomeComponent
 
   ],
   imports: [
@@ -27,7 +29,8 @@ import { MenubarModule } from 'primeng/menubar';
     SharedModule,
     StyleClassModule,
     AuthModule,
-    MenubarModule
+    MenubarModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

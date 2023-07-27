@@ -14,6 +14,9 @@ export class WorkoutListDisplayComponent {
   @Output() addReservation: EventEmitter<any> = new EventEmitter();
 
   onReservation() {
+    if(this.user){
+
+    
     const reservation =  {
           isConfirmed: true,
           isCanceled: false,
@@ -30,5 +33,13 @@ export class WorkoutListDisplayComponent {
       idEstablishment: this.workout.establishment.id,
     }
     this.addReservation.emit(data);
+  }else {
+    this.addReservation.emit({
+      reservation: null,
+      idWorkout: null,
+      idUser: null,
+      idEstablishment: null,
+    });
   }
+}
 }

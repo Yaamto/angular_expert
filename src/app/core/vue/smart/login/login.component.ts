@@ -20,7 +20,7 @@ export class LoginComponent  {
         localStorage.setItem('user', JSON.stringify(data.user));
         this.authStateService.setIsAuthenticated(true);
         this.authStateService.setIsAdmin(data.user.isAdmin);
-        this.router.navigate(['/users']);
+        this.router.navigate(['/workouts']);
       },
       error: (err) => {
         console.log(err);

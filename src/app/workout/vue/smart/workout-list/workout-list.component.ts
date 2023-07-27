@@ -44,9 +44,15 @@ export class WorkoutListComponent implements OnInit {
   }
   show() {
     this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Vous venez de réserver une séance' });
-}
+  }
+  showError(){
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Vous devez être connecté pour pouvoir réserver' });
+  }
   addReservation(data: any){
-    
+    if(!this.user){
+      this.showError();
+      return;
+    }
     this.reservationDisplayService.addReservation(data).subscribe({
       next: (reservation: Reservation) => {
         this.show()
