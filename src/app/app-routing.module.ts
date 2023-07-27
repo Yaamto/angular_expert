@@ -33,6 +33,10 @@ const routes: Routes = [
   { path: 'auth/register',
     component: RegisterComponent
   },
+  { path: 'reservations',
+    loadChildren: () => import('src/app/reservation/reservation.module').then(m => m.ReservationModule),
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({
