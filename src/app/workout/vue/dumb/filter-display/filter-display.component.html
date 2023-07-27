@@ -1,0 +1,16 @@
+<div class="flex align-items-center gap-4">
+  <div class="flex gap-2 align-items-center">
+    <label for="capaciteMax">Capacité maximale</label>
+    <p-inputNumber type="number" id="capaciteMax" [(ngModel)]="capaciteMax"></p-inputNumber>
+  </div>
+  <div class="flex gap-2 align-items-center">
+    <label for="dateDebut">Date de début</label>
+    <p-calendar type="date" id="dateDebut" [(ngModel)]="dateDebut"></p-calendar>
+  </div>
+  <div class="flex gap-2 align-items-center">
+    <label for="dateFin">Date de fin</label>
+    <p-calendar [(ngModel)]="dateFin"></p-calendar>
+  </div>
+  <p-button label="Appliquer" (click)="applyFilter()"></p-button>
+  <p-button *ngIf="dateDebut || dateFin || capaciteMax" label="Réinitialiser" (click)="onReset()" styleClass="p-button-outlined"></p-button>
+</div>

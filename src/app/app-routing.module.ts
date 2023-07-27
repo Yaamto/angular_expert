@@ -19,7 +19,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./workout/workout-list.module').then((m) => m.WorkoutModule),
   },
-  { path: 'establishments',
+  { path: 'admin/establishments',
     loadChildren: () => import('src/app/admin/establishment/establishment.module').then(m => m.EstablishmentModule),
     canActivate: [AuthGuard] 
   },
