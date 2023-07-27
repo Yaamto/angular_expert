@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Workout } from 'src/app/shared/domain/workout.model';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
@@ -19,5 +19,19 @@ export class WorkoutService {
         return throwError(error);
       }),
     );
+  }
+  filterWorkouts(capaciteMax: number, dateDebut: Date, dateFin: Date): Observable<any[]> {
+    let params = new HttpParams();
+    if (capaciteMax) {
+      params = params.set('capaciteMax', capaciteMax.toString());
+    }
+    if (dateDebut) {
+      params = params.set('dateDebut', dateDebut.toISOString());
+    }
+    if (dateFin) {
+      params = params.set('dateFin', dateFin.toISOString());
+    }
+
+    return this.http.get<any[]>(this.workoutListUrl, { params });
   }
 }

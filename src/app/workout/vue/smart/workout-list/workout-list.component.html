@@ -1,5 +1,9 @@
-<div class="flex flew-row gap-4">
-    <div *ngFor="let workout of workouts">
-        <app-workout-list-display [workout]="workout" class="col-4"></app-workout-list-display>
+<div>
+    <app-filter-display class="" (onFilter)="applyFilter($event)" (resetWorkout)="getWorkouts()"></app-filter-display> 
+
+    <div class="flex flew-row gap-4">
+        <div *ngFor="let workout of workouts">
+            <app-workout-list-display [workout]="workout" class="col-4"></app-workout-list-display>
+        </div>
     </div>
 </div>

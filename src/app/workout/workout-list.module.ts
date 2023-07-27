@@ -7,9 +7,13 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { ChipModule } from 'primeng/chip';
 import { DividerModule } from 'primeng/divider';
-
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextModule } from 'primeng/inputtext';
+import { CalendarModule } from 'primeng/calendar';
+import { FilterDisplayComponent } from './vue/dumb/filter-display/filter-display.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [WorkoutListDisplayComponent, WorkoutListComponent],
+  declarations: [WorkoutListDisplayComponent, WorkoutListComponent, FilterDisplayComponent],
   imports: [
     CommonModule,
     WorkoutListRountingModule,
@@ -17,6 +21,10 @@ import { DividerModule } from 'primeng/divider';
     ButtonModule,
     ChipModule,
     DividerModule,
+    InputTextModule,
+    InputNumberModule,
+    CalendarModule,
+    FormsModule
   ],
 })
 export class WorkoutModule {}

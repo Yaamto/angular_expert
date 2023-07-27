@@ -23,7 +23,7 @@ import { MenubarModule } from 'primeng/menubar';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(DataService),
+    HttpClientInMemoryWebApiModule.forRoot(DataService,  { delay: 0 }),
     SharedModule,
     StyleClassModule,
     AuthModule,

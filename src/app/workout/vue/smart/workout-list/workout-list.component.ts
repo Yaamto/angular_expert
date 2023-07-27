@@ -9,16 +9,29 @@ import { WorkoutService } from 'src/app/workout/application/workout.service';
 })
 export class WorkoutListComponent implements OnInit {
   workouts: Workout[] = [];
-
   constructor(private workoutService: WorkoutService) {}
 
   ngOnInit(): void {
     this.getWorkouts();
   }
 
-  private getWorkouts() {
+  getWorkouts() {
     this.workoutService
       .getWorkouts()
       .subscribe((workouts: Workout[]) => (this.workouts = workouts));
   }
+
+  applyFilter(filter: any) {
+    this.workoutService.filterWorkouts(filter.capaciteMax, filter.dateDebut, filter.dateFin)
+      .subscribe({
+        next:(workouts: Workout[]) => {
+          this.workouts = workouts;
+        },
+        error: (error: any) => {
+          console.error('Une erreur est survenue lors du filtrage des entraînements :', error);
+        }
+  });
+  }
+
+
 }

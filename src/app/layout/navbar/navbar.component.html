@@ -12,20 +12,18 @@
         </a>
       </li>
       <li>
-        <a [routerLink]="['/users']" routerLinkActive="active" >
-          <span>Users</span>
-        </a>
-      </li>
-      <li>
-        <a [routerLink]="['/establishments']" routerLinkActive="active" >
-          <span>Establishments</span>
-        </a>
-      </li>
-      <li>
-        <a [routerLink]="['/admin/workouts']" routerLinkActive="active" >
+        <a [routerLink]="['/workouts']" routerLinkActive="active" >
           <span>Workouts</span>
         </a>
       </li>
+      <li class="navbar-item dropdown">
+        <button class="dropdown-btn">Admin</button>
+        <div class="dropdown-content">
+          <a [routerLink]="['/admin/workouts']">Workouts</a>
+          <a [routerLink]="['/admin/establishments']">Establishments</a>
+        </div>
+      </li>
+      
       <li *ngIf="isAuthenticated === false">
         <a [routerLink]="['/auth/register']" routerLinkActive="active">
           <span>Register</span>
