@@ -9,7 +9,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class AuthStateService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   
-  constructor() { }
 
   setIsAuthenticated(isAuthenticated: boolean) {
     this.isAuthenticatedSubject.next(isAuthenticated);

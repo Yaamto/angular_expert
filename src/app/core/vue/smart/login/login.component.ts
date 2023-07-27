@@ -8,12 +8,10 @@ import { AuthStateService } from 'src/app/core/application/auth-state.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
 
   constructor(private authService: AuthService, private router: Router, private authStateService: AuthStateService) { }
 
-  ngOnInit(): void {
-  }
 
   onLoginSubmit(userInfo: Partial<User>) {
     this.authService.login(userInfo).subscribe({

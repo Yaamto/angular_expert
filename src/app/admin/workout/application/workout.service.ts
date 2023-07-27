@@ -51,4 +51,7 @@ export class WorkoutService implements IWorkoutService {
   getSelectedWorkout(): Observable<Workout | null> {
     return this.selectedWorkoutSubject.asObservable();
   }
+  addReservation(id: number): Observable<Workout> {
+    return this.http.post<Workout>(`${this.apiUrl}/${id}/reservation`, null);
+  }
 }

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class EstablishmentFormComponent {
   selectedEstablishment: Establishment | null = null;
-  isNewEstablishment: boolean = false;
+  isNewEstablishment = false;
 
   constructor(private establishmentService: EstablishmentDisplayService, private router: Router) { }
 

@@ -1,7 +1,7 @@
  <p-table [value]="reservations" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
         <tr>
-          <th>idWorkout</th>
+          <th>idWorkoutEstablishment</th>
           <th>isConfirmed</th>
           <th>isCanceled</th>
           <th>isUpdated</th>
@@ -12,7 +12,7 @@
     </ng-template>
     <ng-template pTemplate="body" let-reservation>
         <tr>
-          <td>{{ reservation.idWorkout }}</td>
+          <td>{{ reservation.idWorkoutEstablishment }}</td>
           <td>{{ reservation.isConfirmed }}</td>
           <td>{{ reservation.isCanceled }}</td>
           <td>{{ reservation.isUpdated }}</td>

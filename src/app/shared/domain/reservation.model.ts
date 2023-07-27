@@ -6,5 +6,5 @@ export interface Reservation {
   createdAt: Date;
   updatedAt: Date;
   idUsers: number;
-  idWorkout: number;
+  idWorkoutEstablishment: number;
 }

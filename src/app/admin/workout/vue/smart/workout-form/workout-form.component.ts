@@ -16,7 +16,7 @@ import { EstablishmentService } from 'src/app/shared/application/establishment.s
 })
 export class WorkoutFormComponent {
   selectedWorkout: Workout | null = null;
-  isNewWorkout: boolean = false;
+  isNewWorkout = false;
   workoutTypes: WorkoutType[] = [];
   themes: Theme[]= [];
   establishments: Establishment[] = [];
