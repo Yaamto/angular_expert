@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/auth.guard';
+import { AdminGuard } from './core/admin-guard.guard';
 import { RegisterComponent } from './core/vue/smart/register/register.component';
 import { LoginComponent } from './core/vue/smart/login/login.component';
 
@@ -21,11 +22,11 @@ const routes: Routes = [
   },
   { path: 'admin/establishments',
     loadChildren: () => import('src/app/admin/establishment/establishment.module').then(m => m.EstablishmentModule),
-    canActivate: [AuthGuard] 
+    canActivate: [AdminGuard] 
   },
   { path: 'admin/workouts',
   loadChildren: () => import('src/app/admin/workout/workout.module').then(m => m.WorkoutModule),
-  canActivate: [AuthGuard] 
+  canActivate: [AdminGuard] 
   },
   { path: 'auth/login',
     component: LoginComponent 
