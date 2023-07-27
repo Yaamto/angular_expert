@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/shared/domain/user.model';
+import { User } from 'src/app/shared/domain/models/user.model';
 import { UserService } from 'src/app/user/application/user.service';
 @Component({
   selector: 'app-public-user',
@@ -16,7 +16,6 @@ export class PublicUserComponent implements OnInit {
   }
 
   private getUsers() {
-    console.log('test')
-    this.userService.getUsers().subscribe(users => this.users = users);
+    this.userService.getUsers().subscribe((users: User[]) => this.users = users);
   }
 }

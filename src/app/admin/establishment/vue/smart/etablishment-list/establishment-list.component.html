@@ -1,0 +1,8 @@
+<p>etablishment-list works!</p>
+<app-establishment-list-display
+ [establishments]="establishments"
+ (selectEstablishment)="onSelectEstablishment($event)"
+ (addNewEstablishment)="onAddNew()"
+ (deleteEstablishment)="onDeleteEstablishment($event)"
+ ></app-establishment-list-display>
+

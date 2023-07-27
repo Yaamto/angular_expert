@@ -1,0 +1,50 @@
+<div class="navbar">
+  <div class="container flex justify-content-between nav">
+    <div class="navbar-header">
+      <div class="logo">Angular</div> <!-- Votre logo ici -->
+      <button class="navbar-toggle" (click)="toggleNavbar()">☰</button> <!-- Bouton pour déplier la navigation sur mobile -->
+    </div>
+    <ul class="menu-list" [ngClass]="{'show-menu': showMenu}">
+      <li>
+        <a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+          true}">
+          <span>Accueil</span>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/workouts']" routerLinkActive="active" >
+          <span>Workouts</span>
+        </a>
+      </li>
+      <li *ngIf="isAuthenticated === true">
+        <a [routerLink]="['/reservations']" routerLinkActive="active" >
+          <span>Mes reservations</span>
+        </a>
+      </li>
+      <li class="navbar-item dropdown" *ngIf="isAdmin === true">
+        <button class="dropdown-btn">Admin</button>
+        <div class="dropdown-content">
+          <a [routerLink]="['/admin/workouts']">Workouts</a>
+          <a [routerLink]="['/admin/establishments']">Establishments</a>
+        </div>
+      </li>
+      
+      <li *ngIf="isAuthenticated === false">
+        <a [routerLink]="['/auth/register']" routerLinkActive="active">
+          <span>Register</span>
+        </a>
+      </li>
+      <li *ngIf="isAuthenticated === false">
+        <a [routerLink]="['/auth/login']" routerLinkActive="active">
+          <span>Login</span>
+        </a>
+      </li>
+      <li *ngIf="isAuthenticated === true">
+        <a [routerLink]="['/auth/login']" routerLinkActive="active" (click)="logOut()">
+          <span>Logout</span>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</div>

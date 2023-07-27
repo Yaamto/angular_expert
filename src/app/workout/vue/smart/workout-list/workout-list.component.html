@@ -1,0 +1,9 @@
+<div>
+    <app-filter-display class="" (filter)="applyFilter($event)" (resetWorkout)="getWorkouts()"></app-filter-display> 
+    <p-toast></p-toast>
+    <div class="flex flew-row gap-4">
+        <div *ngFor="let workout of workouts">
+            <app-workout-list-display [user]="user" [workout]="workout" (addReservation)="addReservation($event)" class="col-4"></app-workout-list-display>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="workout-details ">
+    <h3 class="text-center">{{ isNewWorkout ? 'Ajouter une nouvelle séance' : 'Modifier la séance' }}</h3>
+    <div class="flex flex-column gap-2 w-4 mx-auto">
+        <label htmlFor="maxCapacity">Capacité maximum</label>
+        <p-inputNumber inputId="maxCapacity" aria-describedby="maxCapacity" [ngModel]="selectedWorkout?.capaciteMax" (ngModelChange)="onChange('capaciteMax', $event)" > </p-inputNumber>
+      </div>
+      <div class="flex flex-column gap-2 w-4 mx-auto">
+        <label>Date début</label>
+        <p-calendar [ngModel]="selectedWorkout?.dateDebut" (ngModelChange)="onChange('dateDebut', $event)"></p-calendar>
+      </div>
+      <div class="flex flex-column gap-2 w-4 mx-auto">
+        <label>Date fin</label>
+        <p-calendar [ngModel]="selectedWorkout?.dateFin" (ngModelChange)="onChange('dateFin', $event)"></p-calendar>
+      </div>
+  <div class="flex flex-column gap-2 w-4 mx-auto">
+    <label htmlFor="themes">Themes</label>
+    <p-dropdown [options]="themes" [ngModel]="selectedWorkout?.theme" (ngModelChange)="onChange('theme', $event)" optionLabel="libelle"></p-dropdown>
+  </div>
+  <div class="flex flex-column gap-2 w-4 mx-auto">
+    <label htmlFor="workoutType">Type d'entrainement</label>
+    <p-dropdown [options]="workoutTypes"  [ngModel]="selectedWorkout?.workoutType" (ngModelChange)="onChange('workoutType', $event)" optionLabel="libelle"></p-dropdown>
+  </div>
+  <div class="flex flex-column gap-2 w-4 mx-auto">
+    <label htmlFor="establishments">Etablissement</label>
+    <p-dropdown [options]="establishments" [ngModel]="selectedWorkout?.establishment" (ngModelChange)="onChange('establishment', $event)" optionLabel="nom"></p-dropdown>
+  </div>
+    <div class="flex justify-content-center gap-2">
+      <p-button (click)="onSave()" > {{ isNewWorkout ? 'Ajouter' : 'Enregistrer' }}</p-button>
+      <p-button routerLink="/admin/workouts" styleClass="p-button-outlined">Annuler</p-button>
+    </div>
+  </div>
+  
